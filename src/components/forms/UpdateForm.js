@@ -25,6 +25,7 @@ const UpdateForm = ({ id, setUpdate }) => {
   };
 
   return (
+    <>
     <form
       className="w-1/2 h-2/4 bg-white shadow-md rounded-lg p-4"
       onSubmit={handleSubmit(submit)}
@@ -60,6 +61,13 @@ const UpdateForm = ({ id, setUpdate }) => {
         Submit
       </button>
     </form>
+    <button
+          className="w-fit px-3 py-1 mb-2 border rounded-md text-2xl text-cyan-100 font-bold bg-slate-600"
+          onClick={() => setUpdate(false)}
+        >
+           <i className='bx bxs-message-square-x'></i>
+        </button> 
+    </>
   );
 };
 
