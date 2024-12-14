@@ -15,6 +15,22 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   return response.data;
 });
 
+export const updatePost = createAsyncThunk(
+  "posts/updatePost",
+  async ({data, id}) => {
+    const getConfig = () => ({
+      method: "PATCH",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const URL_UPDATE = `https://api.sheetbest.com/sheets/d3e3e88f-8595-4b5d-86b5-363903e8c787/id/*${id}*`;
+    await axios.patch(URL_UPDATE, data, getConfig());
+    return { id, ...data };
+  }
+);
+
 export const crudSlice = createSlice({
   name: "crud",
   initialState,
@@ -31,8 +47,14 @@ export const crudSlice = createSlice({
       .addCase(fetchPosts.rejected, (state, { error }) => {
         state.status = "failed";
         state.error = error.message;
+      })
+      .addCase(updatePost.fulfilled, (state, { payload }) => {
+        const index = state.posts.findIndex((post) => post.id === payload.id);
+        if (index !== -1) {
+          state.posts[index] = { ...state.posts[index], ...payload };
+        }
       });
-  }
+  },
 });
 
 export const selectAllPosts = (state) => state.crud.posts;
