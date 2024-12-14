@@ -10,7 +10,7 @@ const initialState = {
   error: null,
 };
 
-const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
+export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const response = await axios.get(URL);
   return response.data;
 });
@@ -24,19 +24,19 @@ export const crudSlice = createSlice({
       .addCase(fetchPosts.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchPosts.fulfilled, (state, payload) => {
+      .addCase(fetchPosts.fulfilled, (state, { payload }) => {
         state.posts = payload;
         state.status = "success";
       })
-      .addCase(fetchPosts.rejected, (state, error) => {
-        state.error = "Failed";
+      .addCase(fetchPosts.rejected, (state, { error }) => {
+        state.status = "failed";
         state.error = error.message;
       });
-  },
+  }
 });
 
-export const selectAllPosts = (state) => state.posts.posts;
-export const getPostsStatus = (state) => state.posts.status;
-export const getPostsError = (state) => state.posts.error;
+export const selectAllPosts = (state) => state.crud.posts;
+export const getPostsStatus = (state) => state.crud.status;
+export const getPostsError = (state) => state.crud.error;
 
 export default crudSlice.reducer;

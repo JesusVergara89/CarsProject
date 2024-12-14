@@ -23,7 +23,7 @@ const TestRequestDataComponent = () => {
   if (status === "loading") {
     content = <h2 className="text-slate-400 text-2xl font-bold">Loading...</h2>;
   } else if (status === "success") {
-    const renderedPosts = posts.map((post, index) => (
+    content = posts.map((post, index) => (
       <div key={index} className="w-1/2 bg-white shadow-md rounded-lg p-4">
         <h1 className="w-fit px-3 py-1 mb-2 border rounded-md text-2xl text-cyan-100 font-bold bg-slate-600">
           {post.id}
@@ -33,15 +33,15 @@ const TestRequestDataComponent = () => {
         <p className="text-slate-400">{post.description}</p>
       </div>
     ));
-    content = renderedPosts;
   } else if (status === "failed") {
     content = <h2 className="text-slate-400 text-2xl font-bold">{error}</h2>;
   }
 
-  <div className="w-screen h-screen bg-gray-100 flex flex-col items-center justify-center gap-3">
-    {content}
-    <p className="text-"></p>
-  </div>;
+  return (
+    <div className="w-screen h-screen bg-gray-100 sm:flex sm:flex-wrap flex flex-col items-center justify-center gap-3">
+      {content}
+    </div>
+  );
 };
 
 export default TestRequestDataComponent;
