@@ -36,7 +36,7 @@ This project is a React.js application that demonstrates how to use the SheetBes
 
 3. Create a `.env` file in the root directory and add your SheetBest API URL:
    ```env
-   REACT_APP_SHEETBEST_URL=https://sheet.best/api/sheets/your-sheet-id
+   REACT_APP_SHEETBEST_URL=your-sheet-id
    ```
 
 4. Start the development server:
@@ -105,5 +105,5 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Contact
 For any questions or feedback, feel free to reach out:
 - **Email**: your-email@example.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
+- **GitHub**: [yourusername](https://github.com/JesusVergara89/)
 
