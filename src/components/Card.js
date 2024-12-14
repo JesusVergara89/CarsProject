@@ -32,7 +32,7 @@ const Card = () => {
   }
 
   return (
-    <div className="w-screen h-screen bg-gray-100 sm:flex sm:flex-wrap flex flex-col items-center justify-center gap-3">
+    <div className="flex flex-col items-center justify-center w-full h-screen gap-3 bg-gray-100 sm:flex-row sm:flex-wrap">
       {content}
     </div>
   );
