@@ -35,4 +35,8 @@ export const crudSlice = createSlice({
   },
 });
 
+export const selectAllPosts = (state) => state.posts.posts;
+export const getPostsStatus = (state) => state.posts.status;
+export const getPostsError = (state) => state.posts.error;
+
 export default crudSlice.reducer;
