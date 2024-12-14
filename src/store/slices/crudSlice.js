@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const URL =
@@ -31,6 +31,23 @@ export const updatePost = createAsyncThunk(
   }
 );
 
+export const createPost = createAsyncThunk(
+  "posts/createPost",
+  async ({data}) => {
+    let newData = {id: nanoid(), ...data};
+    const getConfig = () => ({
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const URL_POST = `https://api.sheetbest.com/sheets/d3e3e88f-8595-4b5d-86b5-363903e8c787`;
+    await axios.post(URL_POST, newData, getConfig());
+    return newData;
+  }
+);
+
 export const crudSlice = createSlice({
   name: "crud",
   initialState,
@@ -53,6 +70,9 @@ export const crudSlice = createSlice({
         if (index !== -1) {
           state.posts[index] = { ...state.posts[index], ...payload };
         }
+      })
+      .addCase(createPost.fulfilled, (state, { payload }) => {
+        state.posts.push(payload);
       });
   },
 });

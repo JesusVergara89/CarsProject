@@ -18,7 +18,7 @@ const SingleCard = ({ post }) => {
       </div>
 
       <h1 className="w-fit px-3 py-1 mb-2 border rounded-md text-2xl text-cyan-100 font-bold bg-slate-600">
-        {post.id}
+        {post.id.slice(0, 4)}
       </h1>
       <img src={post.image} alt={post.title} className="w-full aspect-auto" />
       <h2 className="text-xl font-bold">{post.date}</h2>
