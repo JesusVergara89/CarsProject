@@ -69,9 +69,11 @@ This project is a React.js application that demonstrates how to use the SheetBes
 ```
 src/
 |-- components/        # Reusable React components
-|-- redux/             # Redux slices and store configuration
-|-- services/          # Axios service for API interactions
-|-- App.js             # Main app component
+|-- store/
+    |-- slices/
+        |-- crudSlice.js # Redux slice for CRUD operations
+    |-- index.js             # Redux slices and store configuration
+|-- Car.js             # Main app component
 |-- index.js           # Entry point
 ```
 
