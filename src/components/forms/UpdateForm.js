@@ -7,6 +7,7 @@ const UpdateForm = ({ id, setUpdate }) => {
   const dispatch = useDispatch();
 
   const resetData = {
+    image: "",
     description: "",
     date: "",
   };
@@ -30,6 +31,18 @@ const UpdateForm = ({ id, setUpdate }) => {
       className="w-1/2 h-2/4 bg-white shadow-md rounded-lg p-4"
       onSubmit={handleSubmit(submit)}
     >
+       <input
+        className={`w-full h-10 px-3 py-1 mb-2 border rounded-md text-2xl text-cyan-100 font-bold bg-slate-600 ${
+          errors.image ? "border-red-500" : ""
+        }`}
+        type="text"
+        placeholder="Image URL"
+        {...register("image", { required: "Image URL is required" })}
+      />
+      {errors.description && (
+        <p className="text-red-500 text-sm">{errors.image.message}</p>
+      )}
+
       <input
         className={`w-full h-10 px-3 py-1 mb-2 border rounded-md text-2xl text-cyan-100 font-bold bg-slate-600 ${
           errors.description ? "border-red-500" : ""
